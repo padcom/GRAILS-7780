@@ -1,6 +1,13 @@
 class HomeController {
 	def index = {
-		sendMessageAndHeaders("activemq:example.input", "Hello", [ firstName: "_John_", lastName: "_Doe_" ])
+		Thread.start {
+			Person.withNewSession { session ->
+				new Person(firstName: "a", lastName: "b").save(flush: true)
+			}
+			Person.withNewSession { session ->
+				new Person(firstName: "c", lastName: "d").save(flush: true)
+			}
+		}
 		render text: "OK", contentType: "text/plain"
 	}
 }
