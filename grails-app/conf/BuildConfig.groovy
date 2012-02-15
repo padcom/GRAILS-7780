@@ -1,6 +1,4 @@
-grails.project.class.dir = "target/classes"
-grails.project.test.class.dir = "target/test-classes"
-grails.project.test.reports.dir = "target/test-reports"
+grails.project.work.dir = "target"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -27,5 +25,15 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.13'
+    }
+    plugins {
+        runtime ":hibernate:$grailsVersion"
+
+        // Uncomment these (or add new ones) to enable additional resources capabilities
+        //runtime ":zipped-resources:1.0"
+        //runtime ":cached-resources:1.0"
+        //runtime ":yui-minify-resources:0.1.4"
+
+        build ":tomcat:$grailsVersion"
     }
 }
